@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thiago Muniz — Product Designer</title>
+<meta name="description" content="Product Designer especialista em SaaS e B2B. 7+ anos de experiência end-to-end, do discovery ao handoff.">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0A0A0F;
+    --bg2: #111118;
+    --bg3: #18181F;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #F0EEF8;
+    --muted: #8A8799;
+    --accent: #7B5EA7;
+    --accent2: #A87FD4;
+    --green: #3DB88A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.9rem;
+    border-radius: 100px;
+    border: 1px solid var(--green);
+    color: var(--green);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .nav-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  /* HERO */
+  .hero {
+    padding: 9rem 2.5rem 6rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--accent2);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid rgba(168,127,212,0.25);
+    border-radius: 100px;
+    background: rgba(123,94,167,0.08);
+  }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--accent2);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.6rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.6rem;
+    background: transparent;
+    color: var(--muted);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.9rem;
+    border: 1px solid var(--border2);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--text); }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--text);
+    display: block;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 2.5rem;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  /* CASES */
+  .cases-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .case-card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg2);
+    transition: border-color 0.25s, transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .case-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-2px);
+  }
+
+  .case-card.featured {
+    grid-template-columns: 1fr;
+  }
+
+  .case-visual {
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .case-card.featured .case-visual { min-height: 260px; }
+
+  /* =====================================================
+     SUBSTITUA OS BLOCOS ABAIXO PELAS SUAS IMAGENS REAIS
+     Troque o conteúdo de .case-visual por:
+     <img src="caminho-da-sua-imagem.png" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0">
+  ====================================================== */
+
+  .case-visual-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0.35;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .case-visual-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    border: 1px solid var(--border2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+  }
+
+  .case-content {
+    padding: 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .case-card.featured .case-content { padding: 2rem 2.25rem; }
+
+  .case-meta {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 100px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .tag-role   { background: rgba(123,94,167,0.15); color: var(--accent2); border: 1px solid rgba(123,94,167,0.2); }
+  .tag-type   { background: rgba(255,255,255,0.05); color: var(--muted);  border: 1px solid var(--border); }
+  .tag-senior { background: rgba(61,184,138,0.1);  color: var(--green);  border: 1px solid rgba(61,184,138,0.2); }
+
+  .case-company {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .case-card.featured .case-company { font-size: 1.6rem; }
+
+  .case-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .case-highlights {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .highlight-num   { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text); display: block; letter-spacing: -0.02em; }
+  .highlight-label { font-size: 0.72rem; color: var(--muted); }
+
+  .case-cta {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--accent2);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .case-cta svg { transition: transform 0.2s; }
+  .case-card:hover .case-cta svg { transform: translateX(3px); }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* =====================================================
+     FOTO: substitua o conteúdo de .about-photo por:
+     <img src="sua-foto.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:16px">
+  ====================================================== */
+  .about-photo {
+    aspect-ratio: 3/4;
+    border-radius: 16px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 0.75rem;
+    font-size: 0.8rem; color: var(--muted);
+    opacity: 0.4; text-align: center; padding: 1rem;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .about-text {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .about-text strong { color: var(--text); font-weight: 500; }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .skill-chip {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: var(--bg3);
+  }
+
+  .edu-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .edu-item {
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+  }
+
+  .edu-title { font-size: 0.875rem; font-weight: 500; color: var(--text); display: block; }
+  .edu-sub   { font-size: 0.78rem; color: var(--muted); display: block; margin-top: 2px; }
+
+  /* CONTACT */
+  .contact-wrapper {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+  }
+
+  .contact-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-sub {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.3rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .contact-link.linkedin { background: rgba(10,102,194,0.15); color: #5AA3D8; border: 1px solid rgba(10,102,194,0.2); }
+  .contact-link.linkedin:hover { background: rgba(10,102,194,0.25); }
+  .contact-link.email  { background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); }
+  .contact-link.email:hover { color: var(--text); border-color: var(--border2); }
+  .contact-link.phone  { background: rgba(61,184,138,0.08); color: var(--green); border: 1px solid rgba(61,184,138,0.15); }
+  .contact-link.phone:hover { background: rgba(61,184,138,0.15); }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    opacity: 0.5;
+  }
+
+  .divider { max-width: 900px; margin: 0 auto; padding: 0 2.5rem; }
+  .divider hr { border: none; border-top: 1px solid var(--border); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero { animation: fadeUp 0.5s ease both; }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.25rem 4rem; }
+    section { padding: 3.5rem 1.25rem; }
+    .case-card { grid-template-columns: 1fr; }
+    .case-visual { min-height: 140px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-photo { aspect-ratio: 16/9; }
+    .contact-wrapper { padding: 2rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Thiago Muniz</a>
+  <ul class="nav-links">
+    <li><a href="#cases">Cases</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <span class="nav-badge">Aberto a oportunidades</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">
+    <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="currentColor" opacity="0.7"/></svg>
+    Product Designer · Sênior · SaaS &amp; B2B
+  </div>
+
+  <h1 class="hero-title">
+    Thiago Muniz<br>
+    <em>transforma problemas de negócio</em><br>
+    em decisões de produto
+  </h1>
+
+  <p class="hero-sub">
+    7+ anos de experiência end-to-end — do discovery ao handoff — em plataformas SaaS e produtos B2B complexos. Opero bem em times internacionais com alta autonomia.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#cases" class="btn-primary">
+      Ver estudos de caso
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/thiago-muniz-designer/" target="_blank" class="btn-ghost">
+      LinkedIn
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+  </div>
+
+  <div class="hero-stats">
+    <div>
+      <span class="stat-num">7+</span>
+      <span class="stat-label">anos de experiência</span>
+    </div>
+    <div>
+      <span class="stat-num">SaaS</span>
+      <span class="stat-label">especialização principal</span>
+    </div>
+    <div>
+      <span class="stat-num">E2E</span>
+      <span class="stat-label">discovery → handoff</span>
+    </div>
+    <div>
+      <span class="stat-num">B2B</span>
+      <span class="stat-label">produtos complexos</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- CASES -->
+<section id="cases">
+  <p class="section-label">Estudos de caso</p>
+  <h2 class="section-title">Trabalhos selecionados</h2>
+
+  <div class="cases-grid">
+
+    <!-- Agnes — DESTAQUE -->
+    <a class="case-card featured" href="https://thiagosilvamuniz.wixsite.com/design/agnes-home" target="_blank">
+      <div class="case-visual" style="background: #13111C;">
+        <!-- SUBSTITUA pelo screenshot do produto Agnes -->
+        <div class="case-visual-placeholder">
+          <div class="case-visual-icon" style="border-color:rgba(168,127,212,0.3);background:rgba(123,94,167,0.1);">🖥</div>
+          <span>Adicione um screenshot aqui</span>
+        </div>
+      </div>
+      <div class="case-content">
+        <div class="case-meta">
+          <span class="tag tag-senior">Único designer · Papel sênior</span>
+          <span class="tag tag-type">Plataforma SaaS · B2B</span>
+        </div>
+        <div class="case-company">Agnes Home</div>
+        <p class="case-desc">
+          Atuação end-to-end como único designer do produto — definindo arquitetura de informação, design system e experiência do usuário de uma plataforma SaaS. Alta autonomia e responsabilidade direta sobre decisões de produto.
+        </p>
+        <div class="case-highlights">
+          <div class="highlight">
+            <!-- PREENCHA com uma métrica real, ex: "↓40% no tempo de onboarding" -->
+            <span class="highlight-num">→</span>
+            <span class="highlight-label">Adicione 1 métrica de impacto aqui</span>
+          </div>
+          <div class="highlight">
+            <span class="highlight-num">→</span>
+            <span class="highlight-label">Ex: redução de churn, NPS, tempo de tarefa</span>
+          </div>
+        </div>
+        <span class="case-cta">
+          Ver estudo de caso
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Accenture -->
+    <a class="case-card" href="https://thiagosilvamuniz.wixsite.com/design/accenture" target="_blank">
+      <div class="case-visual" style="background: #0E1420;">
+        <!-- SUBSTITUA pelo screenshot do projeto Accenture -->
+        <div class="case-visual-placeholder">
+          <div class="case-visual-icon" style="border-color:rgba(90,163,216,0.3);background:rgba(10,102,194,0.1);">💼</div>
+          <span>Adicione um screenshot aqui</span>
+        </div>
+      </div>
+      <div class="case-content">
+        <div class="case-meta">
+          <span class="tag tag-role">UX/UI Specialist</span>
+          <span class="tag tag-type">Enterprise · Grande escala</span>
+        </div>
+        <div class="case-company">Accenture</div>
+        <p class="case-desc">
+          Projetos de grande escala com foco em jornadas do usuário, padronização de interfaces e design system. Contexto internacional, times multidisciplinares e alta complexidade.
+        </p>
+        <span class="case-cta">
+          Ver estudo de caso
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Dynamox -->
+    <a class="case-card" href="https://thiagosilvamuniz.wixsite.com/design/dynamox" target="_blank">
+      <div class="case-visual" style="background: #0F1A15;">
+        <!-- SUBSTITUA pelo screenshot do projeto Dynamox -->
+        <div class="case-visual-placeholder">
+          <div class="case-visual-icon" style="border-color:rgba(61,184,138,0.3);background:rgba(61,184,138,0.08);">📊</div>
+          <span>Adicione um screenshot aqui</span>
+        </div>
+      </div>
+      <div class="case-content">
+        <div class="case-meta">
+          <span class="tag tag-role">UX/UI Designer</span>
+          <span class="tag tag-type">Redesign · Data-driven</span>
+        </div>
+        <div class="case-company">Dynamox</div>
+        <p class="case-desc">
+          Redesign orientado por pesquisa e dados para melhorar clareza, navegação e arquitetura da informação da plataforma.
+        </p>
+        <span class="case-cta">
+          Ver estudo de caso
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <p class="section-label">Sobre</p>
+  <h2 class="section-title">Quem sou</h2>
+
+  <div class="about-grid">
+    <div class="about-photo">
+      <!-- SUBSTITUA por: <img src="sua-foto.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:16px"> -->
+      <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>Adicione sua foto aqui</span>
+    </div>
+
+    <div class="about-content">
+      <p class="about-text">
+        Sou Product Designer (UX/UI) com <strong>mais de 7 anos de experiência</strong> em produtos digitais, com forte atuação em <strong>plataformas SaaS e B2B de alta complexidade</strong>.
+        <br><br>
+        Atuo de forma <strong>end-to-end — do discovery ao handoff</strong> — conectando necessidades do usuário, dados e objetivos de negócio para tomar decisões claras, escaláveis e sustentáveis.
+        <br><br>
+        Tenho background multidisciplinar em design visual, UX estratégico e pensamento de produto. Já atuei em <strong>times internacionais</strong> e utilizo dados e IA como alavanca no processo de design — sempre com foco em impacto real.
+      </p>
+
+      <div class="skills-list">
+        <span class="skill-chip">Discovery &amp; Research</span>
+        <span class="skill-chip">Design System</span>
+        <span class="skill-chip">Arquitetura de Informação</span>
+        <span class="skill-chip">Design Strategy</span>
+        <span class="skill-chip">Handoff</span>
+        <span class="skill-chip">Figma</span>
+        <span class="skill-chip">SaaS</span>
+        <span class="skill-chip">B2B</span>
+        <span class="skill-chip">Dados &amp; BI</span>
+        <span class="skill-chip">Times internacionais</span>
+      </div>
+
+      <div class="edu-list">
+        <div class="edu-item">
+          <span class="edu-title">Pós-graduação em Gestão de Produto</span>
+          <span class="edu-sub">Anhanguera · 2023</span>
+        </div>
+        <div class="edu-item">
+          <span class="edu-title">Design de Multimídia</span>
+          <span class="edu-sub">SENAC · 2015</span>
+        </div>
+        <div class="edu-item">
+          <span class="edu-title">Logística e Transportes</span>
+          <span class="edu-sub">FATEC · 2011</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="contact-wrapper">
+    <h2 class="contact-title">Vamos conversar?</h2>
+    <p class="contact-sub">Aberto a oportunidades CLT e PJ. Respondo rápido.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/thiago-muniz-designer/" target="_blank" class="contact-link linkedin">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="tel:+5511986566032" class="contact-link phone">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.38 2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+        (11) 9 8656-6032
+      </a>
+      <a href="mailto:thiago_silva_muniz@hotmail.com" class="contact-link email">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        E-mail
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Thiago Muniz · Product Designer · São Paulo, SP</p>
+</footer>
+
+</body>
+</html>
